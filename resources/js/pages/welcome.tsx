@@ -7,10 +7,24 @@ import {
 import ConsultationLayout from '@/layouts/consultation';
 import bgJamu from '@/lib/assets/Desain_tanpa_judul_upscayl_4x_ultramix-balanced-4x.png';
 import logoJamu from '@/lib/assets/Jamu!.png';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { HandCoins, ShoppingBag, Vegan } from 'lucide-react';
+import { useEffect } from 'react';
 
 export default function Welcome() {
+    const { url } = usePage();
+
+    useEffect(() => {
+        if (url.includes('#consultation-section')) {
+            setTimeout(() => {
+                document
+                    .getElementById('consultation-section')
+                    ?.scrollIntoView({
+                        behavior: 'smooth',
+                    });
+            }, 100);
+        }
+    }, [url]);
     return (
         <div className="bg-[#f9f5f0]">
             <div
@@ -19,7 +33,7 @@ export default function Welcome() {
             >
                 <Head title="Jamu!" />
                 <div className="flex h-16 w-full items-center justify-between gap-4 bg-black/25 px-16 text-sm font-semibold text-white shadow-2xl shadow-black/40 backdrop-blur-lg">
-                    <a href="">TESTIMONI</a>
+                    <a href="testimony">TESTIMONI</a>
                     <a href="">PRODUK</a>
                     <a href="/">
                         <img
@@ -35,7 +49,14 @@ export default function Welcome() {
                     <h1 className="mb-2 max-w-3xl font-Yusei text-2xl md:text-6xl">
                         Jamu sehat dari dapur kami untuk keluarga anda
                     </h1>
-                    <button className="mt-6 rounded bg-[#f87108] px-6 py-3 font-bold text-white shadow-lg shadow-[#f87108]/50 transition hover:bg-orange-600/90 hover:shadow-orange-600/40">
+                    <button
+                        onClick={() =>
+                            document
+                                .getElementById('consultation-section')
+                                ?.scrollIntoView({ behavior: 'smooth' })
+                        }
+                        className="mt-6 cursor-pointer rounded bg-[#f87108] px-6 py-3 font-bold text-white shadow-lg shadow-[#f87108]/50 transition hover:bg-orange-600/90 hover:shadow-orange-600/40"
+                    >
                         CEK KESEHATAN ANDA
                     </button>
                 </div>
@@ -99,7 +120,9 @@ export default function Welcome() {
                 </Card>
             </div>
 
-            <ConsultationLayout />
+            <div id="consultation-section">
+                <ConsultationLayout />
+            </div>
             <div className="mt-28 text-center">
                 <h1 className="font-[Open_sans] text-5xl font-black text-[#963f16]">
                     NO SHORTCUTS
@@ -107,7 +130,7 @@ export default function Welcome() {
                 <p className="text-4xl font-light text-[#963f16]">
                     Just authentic, natural jamu.
                 </p>
-                {/* LANJUTIN BAGIAN GALERI PRODUK DI SINI */}
+                {/*ZIIIZZZZZ LANJUTIN BAGIAN GALERI PRODUK DI SINI */}
             </div>
         </div>
     );

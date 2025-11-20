@@ -23,6 +23,10 @@ Route::get('/consultation/result', function (Request $request) {
     ]);
 })->name('consultation.result');
 
+Route::get('/testimony', function () {
+    return Inertia::render('testimony');
+})->name('testimony');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
