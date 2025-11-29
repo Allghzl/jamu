@@ -23,7 +23,7 @@ export default function ConsultationLayout() {
                             onClick={() =>
                                 router.post('/consultation', { gejala: label })
                             }
-                            className="rounded-md bg-[#5C230F] px-8 py-2 transition hover:bg-[#422316]"
+                            className="cursor-pointer rounded-md bg-[#5C230F] px-8 py-2 transition hover:bg-[#422316]"
                         >
                             {label}
                         </button>

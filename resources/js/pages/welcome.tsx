@@ -102,7 +102,7 @@ export default function Welcome() {
                 </Card>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-12 py-12">
+            <div className="flex flex-col items-center justify-center gap-12 pt-24 pb-6">
                 <h1 className="text-center font-[Open_sans] text-5xl font-bold text-[#f87108] uppercase">
                     sekilas <br />
                     tentang kami
@@ -120,7 +120,7 @@ export default function Welcome() {
                 </Card>
             </div>
 
-            <div id="consultation-section">
+            <div id="consultation-section" className="mt-23">
                 <ConsultationLayout />
             </div>
             <div className="mt-28 text-center">

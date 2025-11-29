@@ -29,21 +29,21 @@ export default function Testimony() {
             title: 'Senang',
             description:
                 'Bukan hanya sehat, tapi juga menyenangkan. Aromanya menenangkan dan rasanya pas, cocok untuk semua usia.',
-            author: 'Perca',
+            author: 'Caca',
         },
         {
             id: 3,
             title: 'Percaya',
             description:
                 'Produk jamu ini membantu saya menjaga kesehatan tanpa ribet. Lebih percaya diri karena minum herbal alami setiap hari',
-            author: 'Azi',
+            author: 'Aziz',
         },
         {
             id: 4,
             title: 'Bugar',
             description:
                 'Rasanya enak, segar, dan tidak pahit. Setelah rutin minum, badan terasa lebih ringan dan jarang masuk angin lagi.',
-            author: 'Alami',
+            author: 'Andi',
         },
         {
             id: 5,
@@ -87,16 +87,16 @@ export default function Testimony() {
 
     const getCardPosition = (position: number) => {
         switch (position) {
-            case 0:
-                return '-top-5';
+            case 0: // Card tengah - POSISI TERTINGGI
+                return '-top-45'; // Naik lebih tinggi
             case -1:
-            case 1:
-                return 'top-20';
+            case 1: // Card samping - POSISI MENENGAH
+                return '-top-20'; // Sedikit lebih rendah
             case -2:
-            case 2:
-                return 'top-5';
+            case 2: // Card pinggir - POSISI TERENDAH
+                return '-top-30'; // Hanya naik sedikit
             default:
-                return 'top-12';
+                return '-top-20';
         }
     };
 
@@ -138,32 +138,39 @@ export default function Testimony() {
                 </div>
             </div>
 
-            <div className="min-h-screen py-16 text-white">
-                <div className="mb-12">
+            <div className="mt-16 min-h-screen py-16 pb-32 text-white">
+                <div className="mb-4 text-center">
                     <h1 className="text-center font-[Open_sans] text-5xl font-bold">
                         <span className="text-left">SUARA SEHAT </span> <br />{' '}
                         <span className="text-right"> DARI PELANGGAN </span>
                     </h1>
                 </div>
-                <div className="relative flex h-[500px] items-center justify-center">
-                    <div className="relative mt-2 flex h-full items-end justify-center">
+                <div className="relative flex min-h-screen items-center justify-center">
+                    <div
+                        className="absolute left-10 z-50 -translate-x-1/2 -translate-y-1/2 transform rounded-[50%] bg-[#fff6dc]"
+                        style={{
+                            height: '26rem',
+                            width: '21rem',
+                        }}
+                    ></div>
+                    <div className="relative flex h-full items-end justify-center">
                         {visibleCards.map((card) => (
                             <div
                                 key={`${card.id}-${card.position}`}
-                                className={`absolute z-30 transition-all duration-500 ease-in-out ${getCardPosition(card.position)} opacity-100`}
+                                className={`absolute z-30 transition-all duration-500 ease-in-out ${getCardPosition(card.position)}`}
                                 style={{
                                     transform: `translateX(${card.position * 295}px)`,
                                 }}
                             >
                                 <div
-                                    className="absolute top-1/2 left-1/2 mt-1 -translate-x-1/2 -translate-y-1/2 transform rounded-[50%] bg-[#fff6dc]"
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-[50%] bg-[#fff6dc]"
                                     style={{
                                         height: '26rem',
                                         width: '21rem',
                                     }}
                                 ></div>
 
-                                <Card className="relative h-85 w-62 rounded-3xl border-none bg-[#963f16] p-6">
+                                <Card className="relative h-90 w-62 rounded-4xl border-none bg-[#963f16] p-6">
                                     <CardHeader className="items-center p-0">
                                         <CardTitle className="text-center text-4xl text-[#fc6e2b]">
                                             ★★★★★
@@ -174,20 +181,20 @@ export default function Testimony() {
                                         <CardDescription className="min-h-20 text-center text-sm leading-relaxed text-white">
                                             {card.description}
                                         </CardDescription>
-                                        <p className="mt-4 text-center text-sm font-semibold text-white">
-                                            {card.author}
-                                        </p>
                                         <img
                                             src={`https://avatar.iran.liara.run/public/${card.id}`}
                                             alt=""
-                                            className="w-16"
+                                            className="mx-auto mt-4 h-16 w-16 rounded-full border-2 border-white object-cover"
                                         />
+                                        <p className="text-center text-sm font-semibold text-white">
+                                            {card.author}
+                                        </p>
                                     </CardHeader>
                                 </Card>
                             </div>
                         ))}
                     </div>
-                    <div className="absolute bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center space-x-8 rounded-full bg-white/30 p-2">
+                    <div className="absolute -bottom-10 left-1/2 z-50 flex -translate-x-1/2 items-center space-x-8 rounded-full bg-white/30 p-2">
                         <button
                             onClick={handlePrev}
                             className="rounded-full bg-white p-3 shadow-lg transition-all hover:bg-gray-100"
