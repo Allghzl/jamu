@@ -33,4 +33,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
+
+Route::get('/api/jamu', function (Request $request) {
+    $category = $request->query('category');
+
+    return App\Models\Jamu::whereHas('category', function ($q) use ($category) {
+        $q->where('name', $category);
+    })->get();
+});
+
+
 require __DIR__ . '/settings.php';

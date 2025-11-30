@@ -26,7 +26,7 @@ export default function Welcome() {
         }
     }, [url]);
     return (
-        <div className="bg-[#f9f5f0]">
+        <div className="min-h-screen bg-[#f9f5f0]">
             <div
                 className="min-h-screen w-full bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${bgJamu})` }}
@@ -61,66 +61,83 @@ export default function Welcome() {
                     </button>
                 </div>
             </div>
-            <div className="mx-12 flex flex-row justify-between gap-8 py-24 text-center">
-                <Card className="w-xl border-none bg-white py-12 font-[Open_sans] text-[#f87108]">
-                    <HandCoins className="h-16 w-auto items-center justify-center text-[#f87108]" />
-                    <CardHeader>
-                        <CardTitle className="text-2xl font-bold uppercase">
-                            harga bersahabat
-                        </CardTitle>
-                        <CardDescription className="mt-2 text-center text-[#575050]">
-                            Nikmati jamu sehat dengan harga ramah di kantong,
-                            cocok buat sehari-hari.
-                        </CardDescription>
-                    </CardHeader>
-                </Card>
 
-                <Card className="w-xl border-none bg-white py-12 font-[Open_sans] text-[#f87108]">
-                    <Vegan className="h-16 w-auto items-center justify-center text-[#f87108]" />
-                    <CardHeader>
-                        <CardTitle className="text-2xl font-bold uppercase">
-                            segar dan alami
-                        </CardTitle>
-                        <CardDescription className="mt-2 text-center text-[#575050]">
-                            Diracik langsung dari rempah pilihan, bikin tubuh
-                            makin fit dan berenergi.
-                        </CardDescription>
-                    </CardHeader>
-                </Card>
+            <div className="mx-auto w-full bg-white px-6 py-20 md:px-12">
+                {/* Features Section */}
+                <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-12">
+                    <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+                        <Card className="flex-1 border-none bg-linear-to-br from-white to-orange-50 py-12 text-center font-[Open_sans] text-[#f87108]">
+                            <div className="flex justify-center">
+                                <HandCoins className="h-16 w-16 text-[#f87108]" />
+                            </div>
+                            <CardHeader>
+                                <CardTitle className="text-2xl font-bold uppercase">
+                                    harga bersahabat
+                                </CardTitle>
+                                <CardDescription className="mt-3 text-[#575050]">
+                                    Nikmati jamu sehat dengan harga ramah di
+                                    kantong, cocok buat sehari-hari.
+                                </CardDescription>
+                            </CardHeader>
+                        </Card>
 
-                <Card className="w-xl border-none bg-white py-12 font-[Open_sans] text-[#f87108]">
-                    <ShoppingBag className="h-16 w-auto items-center justify-center text-[#f87108]" />
-                    <CardHeader>
-                        <CardTitle className="text-2xl font-bold uppercase">
-                            varian lengkap
-                        </CardTitle>
-                        <CardDescription className="mt-2 text-center text-[#575050]">
-                            Dari kunyit asam sampai beras kencur, banyak pilihan
-                            rasa yang bisa nemenin gaya hidupmu.
+                        <Card className="flex-1 border-none bg-linear-to-br from-white to-orange-50 py-12 text-center font-[Open_sans] text-[#f87108]">
+                            <div className="flex justify-center">
+                                <Vegan className="h-16 w-16 text-[#f87108]" />
+                            </div>
+                            <CardHeader>
+                                <CardTitle className="text-2xl font-bold uppercase">
+                                    segar dan alami
+                                </CardTitle>
+                                <CardDescription className="mt-3 text-[#575050]">
+                                    Diracik langsung dari rempah pilihan, bikin
+                                    tubuh makin fit dan berenergi.
+                                </CardDescription>
+                            </CardHeader>
+                        </Card>
+
+                        <Card className="flex-1 border-none bg-linear-to-br from-white to-orange-50 py-12 text-center font-[Open_sans] text-[#f87108]">
+                            <div className="flex justify-center">
+                                <ShoppingBag className="h-16 w-16 text-[#f87108]" />
+                            </div>
+                            <CardHeader>
+                                <CardTitle className="text-2xl font-bold uppercase">
+                                    varian lengkap
+                                </CardTitle>
+                                <CardDescription className="mt-3 text-[#575050]">
+                                    Dari kunyit asam sampai beras kencur, banyak
+                                    pilihan rasa yang bisa nemenin gaya hidupmu.
+                                </CardDescription>
+                            </CardHeader>
+                        </Card>
+                    </div>
+                </div>
+
+                {/* About Section */}
+                <div className="mx-auto mt-24 flex max-w-4xl flex-col items-center justify-center gap-12">
+                    <h1 className="text-center font-[Open_sans] text-4xl font-bold text-[#f87108] uppercase md:text-5xl">
+                        sekilas tentang kami
+                    </h1>
+                    <Card className="w-full border-none bg-[#963f16] p-8 font-[Open_sans] md:p-12">
+                        <CardDescription className="text-base text-white md:text-lg">
+                            Kami adalah{' '}
+                            <b>
+                                UMKM lokal yang menghadirkan jamu sebagai
+                                minuman sehari-hari untuk anak muda, orang tua,
+                                dan semua kalangan.
+                            </b>{' '}
+                            bukan sekadar warisan tradisi tapi juga gaya hidup
+                            sehat yang kekinian. Dengan bahan-bahan alami
+                            seperti kunyit, jahe, dan rempah pilihan, kami
+                            percaya bahwa sehat itu harus bisa dinikmati dengan
+                            cara yang simple, enak, dan cocok buat rutinitas
+                            modern.
                         </CardDescription>
-                    </CardHeader>
-                </Card>
+                    </Card>
+                </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-12 pt-24 pb-6">
-                <h1 className="text-center font-[Open_sans] text-5xl font-bold text-[#f87108] uppercase">
-                    sekilas <br />
-                    tentang kami
-                </h1>
-                <Card className="max-w-5xl min-w-xl border-none bg-[#963f16] p-8 font-[Open_sans] font-semibold">
-                    <CardDescription className="text-[18px] text-white">
-                        Kami adalah UMKM lokal yang menghadirkan jamu sebagai
-                        minuman sehari-hari anak muda, bukan sekadar warisan
-                        tradisi tapi juga gaya hidup sehat yang kekinian. Dengan
-                        bahan-bahan alami seperti kunyit, jahe, dan rempah
-                        pilihan, kami percaya bahwa sehat itu harus bisa
-                        dinikmati dengan cara yang simple, enak, dan cocok buat
-                        rutinitas modern.
-                    </CardDescription>
-                </Card>
-            </div>
-
-            <div id="consultation-section" className="mt-23">
+            <div id="consultation-section" className="mt-0">
                 <ConsultationLayout />
             </div>
             <div className="mt-28 text-center">
