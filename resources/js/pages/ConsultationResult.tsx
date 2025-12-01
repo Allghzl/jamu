@@ -14,9 +14,7 @@ export default function ConsultationResult({
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch(
-                    `http://localhost:8000/api/jamu?category=${gejala}`,
-                );
+                const res = await fetch(`/api/jamu?category=${gejala}`);
                 const data = await res.json();
                 setProducts(data);
             } catch (error) {
@@ -44,36 +42,49 @@ export default function ConsultationResult({
             {/* PRODUK UTAMA - MAKSIMAL 2 */}
             <div className="mx-auto mt-20 flex w-3/4 flex-col items-center gap-8">
                 {products.slice(0, 2).map((jamu, index) => (
-                    <div key={index} className="flex flex-col items-end">
-                        <div className="w-4/6 rounded-t-4xl bg-[#f87108] px-3 py-2 text-center">
-                            <h2 className="w-full text-3xl font-black">
-                                {jamu.name}
-                            </h2>
+                    <div key={index}>
+                        {index > 0 && (
+                            <div className="my-6 flex items-center justify-center">
+                                <div className="flex-1 border-t border-gray-300"></div>
+                                <span className="mx-4 text-2xl font-bold text-black">
+                                    atau
+                                </span>
+                                <div className="flex-1 border-t border-gray-300"></div>
+                            </div>
+                        )}
+                        <div className="flex flex-col items-end">
+                            <div className="w-4/6 rounded-t-4xl bg-[#f87108] px-3 py-2 text-center">
+                                <h2 className="w-full text-3xl font-black">
+                                    {jamu.name}
+                                </h2>
+                            </div>
+
+                            <Card
+                                className={`flex max-w-2xl cursor-pointer flex-row gap-1 rounded-tr-none bg-white px-2 text-black transition-all ${
+                                    selected === jamu.id
+                                        ? 'border-4 border-[#f87108]'
+                                        : 'border-none'
+                                }`}
+                                onClick={() => setSelected(jamu.id)}
+                            >
+                                <CardHeader className="items-center px-4">
+                                    <img
+                                        src={`/storage/jamu/${jamu.image}`}
+                                        alt={jamu.name}
+                                        className="h-52 w-md rounded-2xl object-cover"
+                                    />
+                                </CardHeader>
+
+                                <CardContent className="flex flex-col justify-between pl-6">
+                                    <p className="text-2xl">
+                                        {jamu.description}
+                                    </p>
+                                    <h1 className="text-3xl font-black text-[#f87108]">
+                                        Rp {jamu.price.toLocaleString()}
+                                    </h1>
+                                </CardContent>
+                            </Card>
                         </div>
-
-                        <Card
-                            className={`flex max-w-2xl cursor-pointer flex-row gap-1 rounded-tr-none bg-white px-2 text-black transition-all ${
-                                selected === jamu.id
-                                    ? 'border-4 border-[#f87108]'
-                                    : 'border-none'
-                            }`}
-                            onClick={() => setSelected(jamu.id)}
-                        >
-                            <CardHeader className="items-center px-4">
-                                <img
-                                    src={`/storage/jamu/${jamu.image}`}
-                                    alt={jamu.name}
-                                    className="h-52 w-md rounded-2xl object-cover"
-                                />
-                            </CardHeader>
-
-                            <CardContent className="flex flex-col justify-between pl-6">
-                                <p className="text-2xl">{jamu.description}</p>
-                                <h1 className="text-3xl font-black text-[#f87108]">
-                                    Rp {jamu.price.toLocaleString()}
-                                </h1>
-                            </CardContent>
-                        </Card>
                     </div>
                 ))}
             </div>

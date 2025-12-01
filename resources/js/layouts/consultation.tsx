@@ -1,6 +1,24 @@
 import { router } from '@inertiajs/react';
 
-export default function ConsultationLayout() {
+export default function Consultation() {
+    const handleConsultation = (gejala: string): void => {
+        router.post(
+            '/consultation',
+            {
+                gejala: gejala,
+            },
+            {
+                onError: (errors) => {
+                    console.error('Error:', errors);
+                    alert('Terjadi error, silakan coba lagi');
+                },
+                onSuccess: () => {
+                    console.log('Success redirect to result');
+                },
+            },
+        );
+    };
+
     return (
         <div className="relative h-screen w-full overflow-hidden bg-[#8B3A1C]">
             <div className="absolute -top-[10vw] -left-[10vw] h-[20vw] w-[20vw] rounded-full bg-[#5C230F]"></div>
@@ -20,9 +38,7 @@ export default function ConsultationLayout() {
                     ].map((label) => (
                         <button
                             key={label}
-                            onClick={() =>
-                                router.post('/consultation', { gejala: label })
-                            }
+                            onClick={() => handleConsultation(label)}
                             className="cursor-pointer rounded-md bg-[#5C230F] px-8 py-2 transition hover:bg-[#422316]"
                         >
                             {label}

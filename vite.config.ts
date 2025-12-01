@@ -21,6 +21,11 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    server: {
+        hmr: {
+            host: 'jamu.pinat.my.id',
+        },
+    },
     esbuild: {
         jsx: 'automatic',
     },
